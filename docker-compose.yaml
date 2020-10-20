@@ -1,0 +1,14 @@
+version: "3.7"
+networks:
+  localdev:
+services:
+  smtp4dev:
+    image: rnwood/smtp4dev:v3
+    ports:
+      - "25:25"
+      - "3000:80"
+    networks:
+      - localdev
+    volumes:
+      - ./database.db:/smtp4dev/database.db
+    restart: unless-stopped
